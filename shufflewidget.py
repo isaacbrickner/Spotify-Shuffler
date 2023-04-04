@@ -55,6 +55,7 @@ class MusicPlayer(tk.Frame):
 
     def shuffle(rand_song):
         play_new_song(get_random_liked_song())
+        print("New song shuffled.")
 
     def play(self):
         resume_playing()
@@ -73,12 +74,23 @@ class MusicPlayer(tk.Frame):
         sp.volume(vol_change)
 
 
+def get_total_liked_tracks():
+    random_song = sp.current_user_saved_tracks(1, 0)
+    trackcnt = random_song['total']
+    print('number of liked songs:', trackcnt)
+    return trackcnt
+
+
 def get_random_liked_song():
-    random_song = sp.current_user_saved_tracks(1, random.randint(0, 4000))
+    total_tracks = get_total_liked_tracks()
+    random_song = sp.current_user_saved_tracks(
+        1, random.randint(0, total_tracks))
+    pp.pprint(random_song)
     for i, item in enumerate(random_song['items']):
-        playlist_ids = {
-            'song_name': item['track']['album']['name'], 'uri': item['track']['album']['artists'][0]['uri'], 'artist_name': item['track']['album']['artists'][0]['name']}
-    return playlist_ids
+        song_data = {
+            'song_name': item['track']['album']['name'], 'uri': item['track']['album']['uri'], 'artist_name': item['track']['album']['artists'][0]['name']}
+        pp.pprint(song_data['song_name'])
+    return song_data
 
 
 def play_new_song(rand_song):
