@@ -38,7 +38,8 @@ class MusicPlayer(tk.Frame):
         self.play_button = tk.Button(self, text="Play", command=self.play)
         self.play_button.pack(side="left")
 
-        self.pause_button = tk.Button(self, text="Pause", command=self.pause)
+        self.pause_button = tk.Button(
+            self, text="Pause", command=self.pause,)
         self.pause_button.pack(side="left")
 
         self.prev_button = tk.Button(self, text="Prev", command=self.prev)
