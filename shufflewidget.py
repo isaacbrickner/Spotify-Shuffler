@@ -68,13 +68,8 @@ class MusicPlayer(tk.Frame):
         print("Prev button pressed.")
 
     def change_volume(self, val):
-        while(True):
-            try:
-                vol_change = int(val)
-                sp.volume(vol_change)
-            except ValueError:
-                # print("Not an integer! Please enter an integer.")
-                continue
+        vol_change = int(val)
+        sp.volume(vol_change)
 
 
 def get_random_liked_song():
