@@ -4,11 +4,6 @@ import tkinter as tk
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 import pprint
-import pandas as pd
-import logging
-import datetime
-import numpy as np
-import timeit
 import time
 import random
 
